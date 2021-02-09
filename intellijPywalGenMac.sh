@@ -2,6 +2,10 @@
 # value=\"(\K[a-f0-9]{6})
 # (?sm)(^[^\r\n]+$)(?!.*^\1$)
 
+if [[ $(uname) == "Darwin" ]]; then
+  alias sed="gsed"
+fi
+
 # Attempts to retrieve wals colors
 cache_dir="${HOME}/.cache/wal"
 # Import colors
@@ -9,7 +13,7 @@ c=($(< "${cache_dir}/colors"))
 c=("${c[@]//\#}")
 
 # Read input param
-ijConfigPath=$1
+ijConfigPath="${1}"
 
 # Set colors based on pywal
 txtColor=${c[15]}

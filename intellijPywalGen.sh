@@ -2,6 +2,9 @@
 # value=\"(\K[a-f0-9]{6})
 # (?sm)(^[^\r\n]+$)(?!.*^\1$)
 
+if [[ $(uname) == "Darwin" ]]; then
+  alias sed="gsed"
+fi
 
 # Attempts to retrieve wals colors
 cache_dir="${HOME}/.cache/wal"
@@ -10,7 +13,7 @@ c=($(< "${cache_dir}/colors"))
 c=("${c[@]//\#}")
 
 # Read input param
-ijConfigPath=$1
+ijConfigPath="${HOME}/Library/Application Support/Jetbrains/IntelliJIdea2020.3"
 
 # Set colors based on pywal
 txtColor=${c[15]}
@@ -41,63 +44,63 @@ templatePath=$DIR\/material_scheme_template.xml
 materialTPath=$DIR\/material_template.xml
 
 # Paths to IDE
-ijCfPath=$ijConfigPath/colors/material-pywal.icls
-ijMPath=$ijConfigPath/options/material_custom_theme.xml
+ijCfPath="${ijConfigPath}/colors/material-pywal.icls"
+ijMPath="${ijConfigPath}/options/material_custom_theme.xml"
 
 # Override existing config
-cp -f $templatePath $ijCfPath
-cp -f $materialTPath $ijMPath
+cp -f $templatePath "${ijCfPath}"
+cp -f $materialTPath "${ijMPath}"
 
 # Replace placeholders for colors
 exp=s/leTXT/$txtColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leBG/$bgColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 # Selection/Highlight colors
 exp=s/leSFG/$sfgColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leSBG/$sbgColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leCROW/$caretRowColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leLN/$lnColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leFG/$fgColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leBG2/$bg2Color/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leContrast/$contrastColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leSBC/$sbColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leTree/$treeColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leDisabled/$disabledColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
 
 exp=s/leActive/$activeColor/g
-sed -i $exp $ijCfPath
-sed -i $exp $ijMPath
+sed -i $exp "${ijCfPath}"
+sed -i $exp "${ijMPath}"
