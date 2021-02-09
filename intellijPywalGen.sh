@@ -16,19 +16,19 @@ c=("${c[@]//\#}")
 ijConfigPath="${HOME}/Library/Application Support/Jetbrains/IntelliJIdea2020.3"
 
 # Set colors based on pywal
-txtColor=${c[15]}
+txtColor=${c[3]}
 bgColor=${c[0]}
 sbgColor=${c[1]}
 sfgColor=${c[0]}
 caretRowColor=${sfgColor}
 lnColor=${c[1]}
 fgColor=${c[15]}
-bg2Color=${c[1]}
-contrastColor=${c[1]}
+bg2Color=${c[8]}
+contrastColor=${c[2]}
 sbColor=${c[1]}
 treeColor=${c[15]}
 disabledColor=${c[15]}
-activeColor=${c[2]}
+activeColor=${c[8]}
 
 # Get current Directory
 SOURCE="${BASH_SOURCE[0]}"
